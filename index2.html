@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Local Web Server</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <p id="text">This HTML page is being served by my local Python web server!</p>
+
+    <!-- Add a button -->
+    <button onclick="changeText()">Click Me</button>
+
+    <!-- Link the JavaScript file -->
+    <script src="script.js"></script>
+<!-- Feedback Box -->
+    <div class="feedback-box">
+        <h3>Feedback</h3>
+        <input type="text" id="feedbackInput" placeholder="Type your thoughts...">
+        <button onclick="submitFeedback()">Send</button>
+        <p id="feedbackResponse"></p>
+    </div>
+</body>
+</html>
