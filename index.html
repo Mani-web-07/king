@@ -14,16 +14,14 @@
 
     <!-- Link the JavaScript file -->
     <script src="script.js"></script>
-<!-- Feedback Box -->
+
+    <!-- Feedback Box with Formspree -->
     <div class="feedback-box">
         <h3>Feedback</h3>
-        <input type="text" id="feedbackInput" placeholder="Type your thoughts...">
-        <button onclick="submitFeedback()">Send</button>
-        <p id="feedbackResponse"></p>
+        <form action="https://formspree.io/f/mbggyjnd" method="POST" id="feedbackForm">
+            <textarea name="message" placeholder="Leave your feedback here..." required></textarea>
+            <button type="submit">Send Feedback</button>
+        </form>
     </div>
-<form action="https://formspree.io/f/mbggyjnd" method="POST" id="feedbackForm">
-    <textarea name="message" placeholder="Leave your feedback here..." required></textarea>
-    <button type="submit">Send Feedback</button>
-</form>
 </body>
 </html>
