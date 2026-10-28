@@ -9,19 +9,20 @@
     <h1>Hello World!</h1>
     <p id="text">This HTML page is being served by my local Python web server!</p>
 
-    <!-- Add a button -->
+    <!-- Interactive button -->
     <button onclick="changeText()">Click Me</button>
-
-    <!-- Link the JavaScript file -->
-    <script src="script.js"></script>
 
     <!-- Feedback Box with Formspree -->
     <div class="feedback-box">
         <h3>Feedback</h3>
         <form action="https://formspree.io/f/mbggyjnd" method="POST" id="feedbackForm">
             <textarea name="message" placeholder="Leave your feedback here..." required></textarea>
+            <br>
             <button type="submit">Send Feedback</button>
         </form>
     </div>
+
+    <!-- Link to JavaScript file -->
+    <script src="script.js"></script>
 </body>
 </html>
