@@ -94,3 +94,85 @@ body {
     font-weight: bold;
     color: #007acc;
 }
+/* Terminal / CLI Container Styling */
+.terminal-container {
+    background-color: #0d1117;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+    border: 1px solid #30363d;
+    text-align: left;
+}
+
+.terminal-header {
+    background-color: #161b22;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #30363d;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+}
+.red { background-color: #ff5f56; }
+.yellow { background-color: #ffbd2e; }
+.green { background-color: #27c93f; }
+
+.terminal-title {
+    color: #8b949e;
+    font-size: 0.85rem;
+    margin-left: 8px;
+}
+
+.terminal-body {
+    padding: 15px;
+    height: 180px;
+    overflow-y: auto;
+    color: #58a6ff;
+    font-size: 0.9rem;
+}
+
+.terminal-body p {
+    margin: 4px 0;
+}
+
+.highlight {
+    color: #e3b341;
+}
+
+.response-text {
+    color: #c9d1d9;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #161b22;
+    border-top: 1px solid #30363d;
+}
+
+.prompt {
+    color: #238636;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+#terminalInput {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #f0f6fc;
+    font-family: inherit;
+    font-size: 0.9rem;
+    width: 100%;
+}
