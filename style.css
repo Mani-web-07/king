@@ -54,3 +54,22 @@ p {
 .feedback-box button:hover {
     background-color: #e03e00;
 }
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.feedback-box {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    max-width: 300px;
+}
+
+.char-count {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 4px;
+    margin-bottom: 10px;
+    transition: color 0.2s ease;
+}
