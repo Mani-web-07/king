@@ -17,6 +17,23 @@
     <!-- Interactive button -->
     <button onclick="changeText()">Click Me</button>
 
+<!-- Terminal / CLI Section -->
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-title">system_cli.exe</span>
+        </div>
+        <div class="terminal-body" id="terminalOutput">
+            <p>Welcome to the System CLI! Type <span class="highlight">'help'</span> for available commands.</p>
+        </div>
+        <div class="terminal-input-line">
+            <span class="prompt">&gt;</span>
+            <input type="text" id="terminalInput" placeholder="Type a command..." onkeydown="handleCliCommand(event)" />
+        </div>
+    </div>
+    
     <!-- Feedback Box with Live Character Counter -->
     <div class="feedback-box">
         <h3>Feedback</h3>
