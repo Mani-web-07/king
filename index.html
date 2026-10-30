@@ -12,13 +12,21 @@
     <!-- Interactive button -->
     <button onclick="changeText()">Click Me</button>
 
-    <!-- Feedback Box with Formspree -->
+    <!-- Feedback Box with Live Character Counter -->
     <div class="feedback-box">
         <h3>Feedback</h3>
         <form action="https://formspree.io/f/mbggyjnd" method="POST" id="feedbackForm">
-            <textarea name="message" placeholder="Leave your feedback here..." required></textarea>
-            <br>
-            <button type="submit">Send Feedback</button>
+            <textarea 
+                name="message" 
+                id="feedbackText" 
+                placeholder="Leave your feedback here..." 
+                maxlength="200" 
+                required
+                oninput="updateCharCount()"></textarea>
+            
+            <div id="charCount" class="char-count">0 / 200 characters</div>
+            
+            <button type="submit" id="submitBtn">Send Feedback</button>
         </form>
     </div>
 
