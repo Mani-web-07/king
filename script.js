@@ -36,3 +36,28 @@ function updateCharCount() {
         charCountDisplay.style.color = '#666';
     }
 }
+// --- Dynamic Clock & Greeting ---
+function updateClockAndGreeting() {
+    const now = new Date();
+    const hours = now.getHours();
+    
+    let greetingText = "Good Evening!";
+    if (hours >= 5 && hours < 12) {
+        greetingText = "Good Morning!";
+    } else if (hours >= 12 && hours < 17) {
+        greetingText = "Good Afternoon!";
+    } else if (hours >= 17 && hours < 22) {
+        greetingText = "Good Evening!";
+    } else {
+        greetingText = "Good Night!";
+    }
+
+    document.getElementById('greeting').innerText = greetingText;
+
+    const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    document.getElementById('clock').innerText = timeString;
+}
+
+// Start clock immediately and update every second
+updateClockAndGreeting();
+setInterval(updateClockAndGreeting, 1000);
