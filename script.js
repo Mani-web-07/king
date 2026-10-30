@@ -61,3 +61,48 @@ function updateClockAndGreeting() {
 // Start clock immediately and update every second
 updateClockAndGreeting();
 setInterval(updateClockAndGreeting, 1000);
+// --- Terminal / CLI Functionality ---
+function handleCliCommand(event) {
+    if (event.key === 'Enter') {
+        const inputField = document.getElementById('terminalInput');
+        const output = document.getElementById('terminalOutput');
+        const rawCmd = inputField.value.trim();
+        const cmd = rawCmd.toLowerCase();
+
+        if (rawCmd === '') return;
+
+        // Print user input line
+        const userLine = document.createElement('p');
+        userLine.innerHTML = `<span class="prompt">&gt;</span> ${rawCmd}`;
+        output.appendChild(userLine);
+
+        // Process commands
+        const response = document.createElement('p');
+        response.className = 'response-text';
+
+        switch (cmd) {
+            case 'help':
+                response.innerText = "Available commands: 'help', 'about', 'clear', 'time', 'secret'";
+                break;
+            case 'about':
+                response.innerText = "This is a custom interactive web page hosted directly on GitHub Pages.";
+                break;
+            case 'time':
+                response.innerText = "Current system time: " + new Date().toLocaleTimeString();
+                break;
+            case 'clear':
+                output.innerHTML = "";
+                inputField.value = '';
+                return;
+            case 'secret':
+                response.innerHTML = "<span style='color: #00ff00;'>⚡ UNLOCKED: Dark Phonk mode activated! Terminal operational.</span>";
+                break;
+            default:
+                response.innerText = `Command not recognized: '${rawCmd}'. Type 'help' for a list of available commands.`;
+        }
+
+        output.appendChild(response);
+        inputField.value = '';
+        output.scrollTop = output.scrollHeight; // Auto-scroll to bottom
+    }
+}
