@@ -67,11 +67,9 @@ function loadCodeSnippet(key, element) {
     const snippetData = codeLibrary[key];
     if (!snippetData) return;
 
-    // Update Code Title & Pre Content
     document.getElementById('codeTitle').innerText = snippetData.title;
     document.getElementById('codeSnippet').innerText = snippetData.code;
 
-    // Update active highlight on menu items
     const menuItems = document.querySelectorAll('.menu-item');
     menuItems.forEach(item => item.classList.remove('active'));
     if (element) {
