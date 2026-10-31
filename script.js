@@ -128,3 +128,88 @@ function toggleTheme() {
         return "Light mode enabled!";
     }
 }
+/* --- Two-Column Layout --- */
+.main-layout {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    align-items: flex-start;
+}
+
+/* --- Left Code Showcase Box --- */
+.code-box-container {
+    flex: 1.2;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    border: 1px solid #333;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    text-align: left;
+}
+
+.code-box-header {
+    background-color: #252526;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.code-box-header h3 {
+    margin: 0;
+    color: #569cd6;
+    font-size: 1.1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.copy-btn {
+    background-color: #0e639c;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background-color 0.2s ease;
+}
+
+.copy-btn:hover {
+    background-color: #1177bb;
+}
+
+.code-box-body {
+    padding: 15px;
+    background-color: #1e1e1e;
+    max-height: 450px;
+    overflow-y: auto;
+}
+
+.code-box-body pre {
+    margin: 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #d4d4d4;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.right-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Responsive adjustment for mobile screens */
+@media (max-width: 768px) {
+    .main-layout {
+        flex-direction: column;
+    }
+    .code-box-container, .right-content {
+        width: 100%;
+    }
+}
