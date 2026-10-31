@@ -55,5 +55,45 @@
     <!-- Link to JavaScript file -->
     <script src="script.js"></script>
     <button id="themeToggleBtn" onclick="toggleTheme()">🌙 Dark Mode</button>
+    <div class="main-layout">
+    <!-- Left Column: Code Showcase Box -->
+    <div class="code-box-container">
+        <div class="code-box-header">
+            <h3>⚡ Code Library</h3>
+            <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+        </div>
+        <div class="code-box-body">
+            <pre><code id="codeSnippet">// --- ESP8266 Motor Driver Web Control ---
+#include <ESP8266WiFi.h>
+
+const char* ssid = "YOUR_WIFI_NAME";
+const char* password = "YOUR_PASSWORD";
+
+WiFiServer server(80);
+
+void setup() {
+    Serial.begin(115200);
+    pinMode(D1, OUTPUT); // Motor Pin A
+    pinMode(D2, OUTPUT); // Motor Pin B
+    WiFi.begin(ssid, password);
+    
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+        Serial.print(".");
+    }
+    server.begin();
+}
+
+void loop() {
+    // Web server request handling logic
+}</code></pre>
+        </div>
+    </div>
+
+    <!-- Right Column: Your Existing Features -->
+    <div class="right-content">
+        <!-- Paste your existing Clock, Terminal, and Feedback HTML elements here -->
+    </div>
+</div>
 </body>
 </html>
