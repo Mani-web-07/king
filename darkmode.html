@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dark Mode Toggle - Code Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <div class="sidebar">
+            <div class="sidebar-title">📁 Code Library</div>
+            <ul class="code-menu" style="list-style: none; padding: 0;">
+                <li><a href="index.html" class="menu-item">ESP8266 Motor Control</a></li>
+                <li><a href="python.html" class="menu-item">Python Web Server</a></li>
+                <li><a href="terminal.html" class="menu-item">Terminal CLI Script</a></li>
+                <li><a href="darkmode.html" class="menu-item active">Dark Mode Toggle</a></li>
+            </ul>
+        </div>
+        <div class="content-area">
+            <div class="code-display-card">
+                <div class="code-header">
+                    <span>Dark Mode Toggle</span>
+                    <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+                </div>
+                <div class="code-body">
+                    <pre><code id="codeSnippet">/* --- Dark Mode CSS Switch --- */
+body.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
