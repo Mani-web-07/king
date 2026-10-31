@@ -23,6 +23,7 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
 }
 
 .sidebar-title {
@@ -59,7 +60,11 @@ body {
 .content-area {
     flex: 1;
     padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     overflow-y: auto;
+    max-width: 900px;
 }
 
 /* Code Display Card */
@@ -68,7 +73,6 @@ body {
     color: #f8f9fa;
     border-radius: 10px;
     overflow: hidden;
-    margin-bottom: 30px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
@@ -112,12 +116,10 @@ body {
     padding: 20px;
     border-radius: 8px;
     text-align: center;
-    margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .feedback-box {
-    margin-top: 30px;
     background: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -131,4 +133,12 @@ body {
     margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+button {
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
 }
