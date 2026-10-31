@@ -1,125 +1,77 @@
-// --- Dynamic Clock & Greeting ---
-function updateClockAndGreeting() {
-    const now = new Date();
-    const hours = now.getHours();
-    
-    let greetingText = "Good Evening!";
-    if (hours >= 5 && hours < 12) {
-        greetingText = "Good Morning!";
-    } else if (hours >= 12 && hours < 17) {
-        greetingText = "Good Afternoon!";
-    } else if (hours >= 17 && hours < 22) {
-        greetingText = "Good Evening!";
-    } else {
-        greetingText = "Good Night!";
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Local Web Server</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- LEFT SIDEBAR DASHBOARD -->
+        <div class="sidebar">
+            <div class="sidebar-title">📁 Code Library</div>
+            <ul class="code-menu">
+                <li class="menu-item active" onclick="loadCodeSnippet('esp8266', this)">ESP8266 Motor Control</li>
+                <li class="menu-item" onclick="loadCodeSnippet('pythonServer', this)">Python Web Server</li>
+                <li class="menu-item" onclick="loadCodeSnippet('terminalCli', this)">Terminal CLI Script</li>
+                <li class="menu-item" onclick="loadCodeSnippet('darkMode', this)">Dark Mode Toggle</li>
+            </ul>
+        </div>
 
-    const greetingElem = document.getElementById('greeting');
-    const clockElem = document.getElementById('clock');
-    
-    if (greetingElem) greetingElem.innerText = greetingText;
-    if (clockElem) clockElem.innerText = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-}
+        <!-- RIGHT MAIN CONTENT AREA -->
+        <div class="content-area">
+            <!-- CODE VIEWER BOX -->
+            <div class="code-display-card">
+                <div class="code-header">
+                    <span id="codeTitle">ESP8266 Motor Control</span>
+                    <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+                </div>
+                <div class="code-body">
+                    <pre><code id="codeSnippet"></code></pre>
+                </div>
+            </div>
 
-updateClockAndGreeting();
-setInterval(updateClockAndGreeting, 1000);
+            <!-- DYNAMIC GREETING & CLOCK -->
+            <div class="greeting-container">
+                <h2 id="greeting">Hello!</h2>
+                <p id="clock">00:00:00 AM</p>
+            </div>
 
-// --- Interactive Text Button ---
-function changeText() {
-    const textElem = document.getElementById('text');
-    if (textElem) {
-        textElem.innerText = "Awesome! You clicked the button and updated the script live!";
-    }
-}
+            <h1>Hello World!</h1>
+            <p id="text">This HTML page is being served by my local Python web server!</p>
 
-// --- Character Counter ---
-function updateCharCount() {
-    const feedbackText = document.getElementById('feedbackText');
-    const charCount = document.getElementById('charCount');
-    if (feedbackText && charCount) {
-        charCount.innerText = feedbackText.value.length + " / 200 characters";
-    }
-}
+            <button onclick="changeText()">Click Me</button>
+            <button id="themeToggleBtn" onclick="toggleTheme()">🌙 Dark Mode</button>
 
-// --- Theme Toggle ---
-function toggleTheme() {
-    const body = document.body;
-    body.classList.toggle('dark-theme');
-    
-    const btn = document.getElementById('themeToggleBtn');
-    if (body.classList.contains('dark-theme')) {
-        if (btn) btn.innerText = '☀️ Light Mode';
-        return "Dark mode enabled!";
-    } else {
-        if (btn) btn.innerText = '🌙 Dark Mode';
-        return "Light mode enabled!";
-    }
-}
+            <!-- TERMINAL / CLI SECTION -->
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="terminal-title">system_cli.exe</span>
+                </div>
+                <div class="terminal-body" id="terminalOutput">
+                    <p>Welcome to the System CLI! Type <span class="highlight">'help'</span> for available commands.</p>
+                </div>
+                <div class="terminal-input-line">
+                    <span class="prompt">&gt;</span>
+                    <input type="text" id="terminalInput" placeholder="Type a command..." onkeydown="handleCliCommand(event)" />
+                </div>
+            </div>
 
-// --- Terminal / CLI Functionality ---
-function handleCliCommand(event) {
-    if (event.key === 'Enter') {
-        const inputField = document.getElementById('terminalInput');
-        const output = document.getElementById('terminalOutput');
-        if (!inputField || !output) return;
+            <!-- FEEDBACK FORM -->
+            <div class="feedback-box">
+                <h3>Feedback</h3>
+                <form action="https://formspree.io/f/mbggyjnd" method="POST" id="feedbackForm">
+                    <textarea name="message" id="feedbackText" placeholder="Leave your feedback here..." oninput="updateCharCount()" maxlength="200"></textarea>
+                    <div id="charCount">0 / 200 characters</div>
+                    <button type="submit" id="submitBtn">Send Feedback</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
-        const rawCmd = inputField.value.trim();
-        const cmd = rawCmd.toLowerCase();
-
-        if (rawCmd === '') return;
-
-        const userLine = document.createElement('p');
-        userLine.innerHTML = `<span class="prompt">&gt;</span> ${rawCmd}`;
-        output.appendChild(userLine);
-
-        const response = document.createElement('p');
-        response.className = 'response-text';
-
-        switch (cmd) {
-            case 'help':
-                response.innerText = "Available commands: 'help', 'about', 'clear', 'time', 'secret', 'theme'";
-                break;
-            case 'theme':
-            case 'dark':
-            case 'light':
-                response.innerText = toggleTheme();
-                break;
-            case 'about':
-                response.innerText = "This is a custom interactive web page hosted directly on GitHub Pages.";
-                break;
-            case 'time':
-                response.innerText = "Current system time: " + new Date().toLocaleTimeString();
-                break;
-            case 'clear':
-                output.innerHTML = "";
-                inputField.value = '';
-                return;
-            case 'secret':
-                response.innerHTML = "<span style='color: #00ff00;'>⚡ UNLOCKED: Dark Phonk mode activated! Terminal operational.</span>";
-                break;
-            default:
-                response.innerText = `Command not recognized: '${rawCmd}'. Type 'help' for a list of available commands.`;
-        }
-
-        output.appendChild(response);
-        inputField.value = '';
-        output.scrollTop = output.scrollHeight;
-    }
-}
-
-// --- Copy Code Snippet Logic ---
-function copyCode() {
-    const codeSnippet = document.getElementById('codeSnippet');
-    if (!codeSnippet) return;
-    
-    const codeText = codeSnippet.innerText;
-    navigator.clipboard.writeText(codeText).then(() => {
-        const copyBtn = document.querySelector('.copy-btn');
-        if (copyBtn) {
-            copyBtn.innerText = 'Copied! ✅';
-            setTimeout(() => {
-                copyBtn.innerText = 'Copy Code';
-            }, 2000);
-        }
-    });
-}
+    <script src="script.js"></script>
+</body>
+</html>
