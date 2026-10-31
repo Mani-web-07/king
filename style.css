@@ -221,3 +221,14 @@ body.dark-theme #themeToggleBtn {
     color: #fff;
     border-color: #555;
 }
+// --- Copy Code Snippet Logic ---
+function copyCode() {
+    const codeText = document.getElementById('codeSnippet').innerText;
+    navigator.clipboard.writeText(codeText).then(() => {
+        const copyBtn = document.querySelector('.copy-btn');
+        copyBtn.innerText = 'Copied! ✅';
+        setTimeout(() => {
+            copyBtn.innerText = 'Copy Code';
+        }, 2000);
+    });
+}
