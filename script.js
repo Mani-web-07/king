@@ -80,29 +80,51 @@ function handleCliCommand(event) {
         const response = document.createElement('p');
         response.className = 'response-text';
 
-        switch (cmd) {
-            case 'help':
-                response.innerText = "Available commands: 'help', 'about', 'clear', 'time', 'secret'";
-                break;
-            case 'about':
-                response.innerText = "This is a custom interactive web page hosted directly on GitHub Pages.";
-                break;
-            case 'time':
-                response.innerText = "Current system time: " + new Date().toLocaleTimeString();
-                break;
-            case 'clear':
-                output.innerHTML = "";
-                inputField.value = '';
-                return;
-            case 'secret':
-                response.innerHTML = "<span style='color: #00ff00;'>⚡ UNLOCKED: Dark Phonk mode activated! Terminal operational.</span>";
-                break;
-            default:
-                response.innerText = `Command not recognized: '${rawCmd}'. Type 'help' for a list of available commands.`;
-        }
+       switch (cmd) {
+    case 'help':
+        response.innerText = "Available commands: 'help', 'about', 'clear', 'time', 'secret', 'theme'";
+        break;
 
+    // --- NEW THEME COMMAND ---
+    case 'theme':
+    case 'dark':
+    case 'light':
+        const modeStatus = toggleTheme();
+        response.innerText = modeStatus;
+        break;
+
+    case 'about':
+        response.innerText = "This is a custom interactive web page hosted directly on GitHub Pages.";
+        break;
+    case 'time':
+        response.innerText = "Current system time: " + new Date().toLocaleTimeString();
+        break;
+    case 'clear':
+        output.innerHTML = "";
+        inputField.value = '';
+        return;
+    case 'secret':
+        response.innerHTML = "<span style='color: #00ff00;'>⚡ UNLOCKED: Dark Phonk mode activated! Terminal operational.</span>";
+        break;
+    default:
+        response.innerText = `Command not recognized: '${rawCmd}'. Type 'help' for a list of available commands.`;
+}
         output.appendChild(response);
         inputField.value = '';
         output.scrollTop = output.scrollHeight; // Auto-scroll to bottom
+    }
+}
+// --- Theme Toggle Logic ---
+function toggleTheme() {
+    const body = document.body;
+    body.classList.toggle('dark-theme');
+    
+    const btn = document.getElementById('themeToggleBtn');
+    if (body.classList.contains('dark-theme')) {
+        if (btn) btn.innerText = '☀️ Light Mode';
+        return "Dark mode enabled!";
+    } else {
+        if (btn) btn.innerText = '🌙 Dark Mode';
+        return "Light mode enabled!";
     }
 }
