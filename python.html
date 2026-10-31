@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python Web Server - Code Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <div class="sidebar">
+            <div class="sidebar-title">📁 Code Library</div>
+            <ul class="code-menu" style="list-style: none; padding: 0;">
+                <li><a href="index.html" class="menu-item">ESP8266 Motor Control</a></li>
+                <li><a href="python.html" class="menu-item active">Python Web Server</a></li>
+                <li><a href="terminal.html" class="menu-item">Terminal CLI Script</a></li>
+                <li><a href="darkmode.html" class="menu-item">Dark Mode Toggle</a></li>
+            </ul>
+        </div>
+        <div class="content-area">
+            <div class="code-display-card">
+                <div class="code-header">
+                    <span>Python Web Server</span>
+                    <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+                </div>
+                <div class="code-body">
+                    <pre><code id="codeSnippet"># --- Simple Local Python HTTP Server ---
+import http.server
+import socketserver
+
+PORT = 8000
+Handler = http.server.SimpleHTTPRequestHandler
+
+with socketserver.TCPServer(("", PORT), Handler) as httpd:
+    print("Serving on port:", PORT)
+    httpd.serve_forever()</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
