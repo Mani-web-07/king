@@ -2,41 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ESP8266 Motor Control - Code Library</title>
+    <title>Home Page - Code Library</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="app-layout">
-        <!-- LEFT SIDEBAR DASHBOARD -->
+        <!-- LEFT SIDEBAR -->
         <div class="sidebar">
             <div class="sidebar-title">📁 Code Library</div>
-            <ul class="code-menu" style="list-style: none; padding: 0;">
-                <li><a href="index.html" class="menu-item">Home Page</a></li>
+            <ul class="code-menu">
+                <li><a href="index.html" class="menu-item active">Home Page</a></li>
                 <li><a href="python.html" class="menu-item">Python Web Server</a></li>
                 <li><a href="terminal.html" class="menu-item">Terminal CLI Script</a></li>
                 <li><a href="darkmode.html" class="menu-item">Dark Mode Toggle</a></li>
             </ul>
         </div>
 
-            <!-- DYNAMIC GREETING & CLOCK -->
+        <!-- RIGHT MAIN CONTENT -->
+        <div class="content-area">
+            <div class="code-display-card">
+                <div class="code-header">
+                    <span>Welcome Home</span>
+                    <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+                </div>
+                <div class="code-body">
+                    <pre><code id="codeSnippet">// --- Welcome to my portfolio home page ---
+// Select a file from the sidebar to view respective code snippets.</code></pre>
+                </div>
+            </div>
+
             <div class="greeting-container">
                 <h2 id="greeting">Hello!</h2>
                 <p id="clock">00:00:00 AM</p>
             </div>
 
-            <h1>Hello World!</h1>
-            <p id="text">This HTML page is being served by my local Python web server!</p>
+            <div>
+                <h1>Hello World!</h1>
+                <p id="text">This HTML page is hosted live on GitHub Pages!</p>
+            </div>
 
-            <button onclick="changeText()">Click Me</button>
-            <button id="themeToggleBtn" onclick="toggleTheme()">🌙 Dark Mode</button>
+            <div>
+                <button onclick="changeText()">Click Me</button>
+                <button id="themeToggleBtn" onclick="toggleTheme()">🌙 Dark Mode</button>
+            </div>
 
-            <!-- FEEDBACK FORM -->
             <div class="feedback-box">
                 <h3>Feedback</h3>
                 <form action="https://formspree.io/f/mbggyjnd" method="POST" id="feedbackForm">
                     <textarea name="message" id="feedbackText" placeholder="Leave your feedback here..." oninput="updateCharCount()" maxlength="200"></textarea>
                     <div id="charCount">0 / 200 characters</div>
-                    <button type="submit" id="submitBtn">Send Feedback</button>
+                    <button type="submit" id="submitBtn" style="margin-top: 10px; background: #2563eb; color: #fff;">Send Feedback</button>
                 </form>
             </div>
         </div>
