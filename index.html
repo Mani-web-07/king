@@ -17,42 +17,6 @@
             </ul>
         </div>
 
-        <!-- RIGHT MAIN CONTENT AREA -->
-        <div class="content-area">
-            <!-- CODE VIEWER BOX -->
-            <div class="code-display-card">
-                <div class="code-header">
-                    <span>ESP8266 Motor Control</span>
-                    <button class="copy-btn" onclick="copyCode()">Copy Code</button>
-                </div>
-                <div class="code-body">
-                    <pre><code id="codeSnippet">// --- ESP8266 Motor Driver Web Control ---
-#include <ESP8266WiFi.h>
-
-const char* ssid = "YOUR_WIFI_NAME";
-const char* password = "YOUR_PASSWORD";
-
-WiFiServer server(80);
-
-void setup() {
-    Serial.begin(115200);
-    pinMode(D1, OUTPUT);
-    pinMode(D2, OUTPUT);
-    WiFi.begin(ssid, password);
-    
-    while (WiFi.status() != WL_CONNECTED) {
-        delay(500);
-        Serial.print(".");
-    }
-    server.begin();
-}
-
-void loop() {
-    // Web server request handling logic
-}</code></pre>
-                </div>
-            </div>
-
             <!-- DYNAMIC GREETING & CLOCK -->
             <div class="greeting-container">
                 <h2 id="greeting">Hello!</h2>
