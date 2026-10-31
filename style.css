@@ -1,85 +1,103 @@
 body {
-    background-color: #f0f8ff;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
     text-align: center;
-    margin-top: 50px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1 {
-    color: #ff4500;
+/* --- Two-Column Dashboard Layout --- */
+.main-layout {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    max-width: 1300px;
+    margin: 20px auto;
+    padding: 0 20px;
+    align-items: flex-start;
 }
 
-p {
-    color: #333333;
-    font-size: 18px;
-}
-.feedback-box {
-    position: fixed;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 220px;
+/* Left Code Showcase Box */
+.code-box-container {
+    flex: 1.2;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    border: 1px solid #333;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
     text-align: left;
+    position: sticky;
+    top: 20px;
 }
 
-.feedback-box h3 {
-    margin-top: 0;
-    color: #ff4500;
-    font-size: 18px;
+.code-box-header {
+    background-color: #252526;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
 }
 
-.feedback-box input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.code-box-header h3 {
+    margin: 0;
+    color: #569cd6;
+    font-size: 1rem;
 }
 
-.feedback-box button {
-    background-color: #ff4500;
-    color: white;
+.copy-btn {
+    background-color: #0e639c;
+    color: #ffffff;
     border: none;
-    padding: 8px 12px;
+    padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
-    width: 100%;
-}
-
-.feedback-box button:hover {
-    background-color: #e03e00;
-}
-body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-}
-
-.feedback-box {
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    max-width: 300px;
-}
-
-.char-count {
     font-size: 0.85rem;
-    color: #666;
-    margin-top: 4px;
-    margin-bottom: 10px;
-    transition: color 0.2s ease;
+    transition: background-color 0.2s ease;
 }
+
+.copy-btn:hover {
+    background-color: #1177bb;
+}
+
+.code-box-body {
+    padding: 15px;
+    background-color: #1e1e1e;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.code-box-body pre {
+    margin: 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: #d4d4d4;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+/* Right Column Content */
+.right-content {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Greeting & Clock Container */
 .greeting-container {
-    background-color: #f4f4f9;
+    background-color: #ffffff;
     border-radius: 8px;
     padding: 12px 20px;
     margin-bottom: 20px;
     display: inline-block;
     border: 1px solid #ddd;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
 }
 
 .greeting-container h2 {
@@ -94,18 +112,37 @@ body {
     font-weight: bold;
     color: #007acc;
 }
+
+/* Interactive Elements */
+button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: #333;
+    transition: all 0.3s ease;
+    margin: 10px 0;
+}
+
+button:hover {
+    background-color: #f0f0f0;
+}
+
 /* Terminal / CLI Container Styling */
 .terminal-container {
     background-color: #0d1117;
     border-radius: 8px;
-    width: 90%;
-    max-width: 600px;
-    margin: 20px auto;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px 0;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     font-family: 'Courier New', Courier, monospace;
     overflow: hidden;
     border: 1px solid #30363d;
     text-align: left;
+    box-sizing: border-box;
 }
 
 .terminal-header {
@@ -135,7 +172,7 @@ body {
 
 .terminal-body {
     padding: 15px;
-    height: 180px;
+    height: 160px;
     overflow-y: auto;
     color: #58a6ff;
     font-size: 0.9rem;
@@ -176,25 +213,60 @@ body {
     font-size: 0.9rem;
     width: 100%;
 }
-/* --- Dark Theme Styles --- */
+
+/* Feedback Box */
+.feedback-box {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid #ddd;
+    text-align: left;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.feedback-box h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.feedback-box textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+#charCount {
+    font-size: 0.8rem;
+    color: #666;
+    margin: 6px 0 12px 0;
+    text-align: right;
+}
+
+/* Dark Theme Overrides */
 body.dark-theme {
     background-color: #121212;
     color: #e0e0e0;
 }
 
-body.dark-theme .greeting-container {
-    background-color: #1e1e1e;
-    border-color: #333;
-}
-
-body.dark-theme .greeting-container h2 {
-    color: #fff;
-}
-
+body.dark-theme .greeting-container,
 body.dark-theme .feedback-box {
     background-color: #1e1e1e;
-    color: #fff;
     border-color: #333;
+    color: #fff;
+}
+
+body.dark-theme .greeting-container h2,
+body.dark-theme .feedback-box h3 {
+    color: #fff;
 }
 
 body.dark-theme textarea {
@@ -203,32 +275,22 @@ body.dark-theme textarea {
     border-color: #444;
 }
 
-/* Theme Toggle Button Styling */
-#themeToggleBtn {
-    padding: 8px 16px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    background-color: #ffffff;
-    color: #333;
-    transition: all 0.3s ease;
-    margin-bottom: 15px;
-}
-
-body.dark-theme #themeToggleBtn {
+body.dark-theme button {
     background-color: #2b2b2b;
     color: #fff;
     border-color: #555;
 }
-// --- Copy Code Snippet Logic ---
-function copyCode() {
-    const codeText = document.getElementById('codeSnippet').innerText;
-    navigator.clipboard.writeText(codeText).then(() => {
-        const copyBtn = document.querySelector('.copy-btn');
-        copyBtn.innerText = 'Copied! ✅';
-        setTimeout(() => {
-            copyBtn.innerText = 'Copy Code';
-        }, 2000);
-    });
+
+body.dark-theme button:hover {
+    background-color: #3a3a3a;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .main-layout {
+        flex-direction: column;
+    }
+    .code-box-container, .right-content {
+        width: 100%;
+    }
 }
