@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Local Web Server</title>
+    <title>ESP8266 Motor Control - Code Library</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -10,11 +10,11 @@
         <!-- LEFT SIDEBAR DASHBOARD -->
         <div class="sidebar">
             <div class="sidebar-title">📁 Code Library</div>
-            <ul class="code-menu">
-                <li class="menu-item active" onclick="loadCodeSnippet('esp8266', this)">ESP8266 Motor Control</li>
-                <li class="menu-item" onclick="loadCodeSnippet('pythonServer', this)">Python Web Server</li>
-                <li class="menu-item" onclick="loadCodeSnippet('terminalCli', this)">Terminal CLI Script</li>
-                <li class="menu-item" onclick="loadCodeSnippet('darkMode', this)">Dark Mode Toggle</li>
+            <ul class="code-menu" style="list-style: none; padding: 0;">
+                <li><a href="index.html" class="menu-item active">ESP8266 Motor Control</a></li>
+                <li><a href="python.html" class="menu-item">Python Web Server</a></li>
+                <li><a href="terminal.html" class="menu-item">Terminal CLI Script</a></li>
+                <li><a href="darkmode.html" class="menu-item">Dark Mode Toggle</a></li>
             </ul>
         </div>
 
@@ -23,11 +23,34 @@
             <!-- CODE VIEWER BOX -->
             <div class="code-display-card">
                 <div class="code-header">
-                    <span id="codeTitle">ESP8266 Motor Control</span>
+                    <span>ESP8266 Motor Control</span>
                     <button class="copy-btn" onclick="copyCode()">Copy Code</button>
                 </div>
                 <div class="code-body">
-                    <pre><code id="codeSnippet"></code></pre>
+                    <pre><code id="codeSnippet">// --- ESP8266 Motor Driver Web Control ---
+#include <ESP8266WiFi.h>
+
+const char* ssid = "YOUR_WIFI_NAME";
+const char* password = "YOUR_PASSWORD";
+
+WiFiServer server(80);
+
+void setup() {
+    Serial.begin(115200);
+    pinMode(D1, OUTPUT);
+    pinMode(D2, OUTPUT);
+    WiFi.begin(ssid, password);
+    
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+        Serial.print(".");
+    }
+    server.begin();
+}
+
+void loop() {
+    // Web server request handling logic
+}</code></pre>
                 </div>
             </div>
 
@@ -42,23 +65,6 @@
 
             <button onclick="changeText()">Click Me</button>
             <button id="themeToggleBtn" onclick="toggleTheme()">🌙 Dark Mode</button>
-
-            <!-- TERMINAL / CLI SECTION -->
-            <div class="terminal-container">
-                <div class="terminal-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                    <span class="terminal-title">system_cli.exe</span>
-                </div>
-                <div class="terminal-body" id="terminalOutput">
-                    <p>Welcome to the System CLI! Type <span class="highlight">'help'</span> for available commands.</p>
-                </div>
-                <div class="terminal-input-line">
-                    <span class="prompt">&gt;</span>
-                    <input type="text" id="terminalInput" placeholder="Type a command..." onkeydown="handleCliCommand(event)" />
-                </div>
-            </div>
 
             <!-- FEEDBACK FORM -->
             <div class="feedback-box">
