@@ -35,7 +35,25 @@ body {
 .code-menu {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Adds clean spacing between options so they don't overlap */
+}
+
+.menu-item {
+    display: block;
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: background 0.2s;
+}
+
+.menu-item:hover, .menu-item.active {
+    background: #2563eb;
+}
 }
 
 .menu-item {
