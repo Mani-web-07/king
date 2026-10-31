@@ -16,7 +16,7 @@ function submitFeedback() {
     }
 }
 function changeText() {
-    document.getElementById("text").innerText = "You clicked the button! The JavaScript file is working properly.";
+    document.getElementById("text").innerText = "You clicked the button! thankyou.";
 }
 
 function updateCharCount() {
