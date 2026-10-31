@@ -1,3 +1,4 @@
+console.log("Script loaded successfully!");
 // --- CODE LIBRARY DATA ---
 const codeLibrary = {
     esp8266: {
