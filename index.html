@@ -1,99 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Local Web Server</title>
-    <link rel="stylesheet" href="style.css">
-</head>
 <body>
-   <!-- Dynamic Greeting & Clock -->
-    <div class="greeting-container">
-        <h2 id="greeting">Hello!</h2>
-        <p id="clock">00:00:00 AM</p>
-    </div>
-    <h1>Hello World!</h1>
-    <p id="text">This HTML page is being served by my local Python web server!</p>
-
-    <!-- Interactive button -->
-    <button onclick="changeText()">Click Me</button>
-
-<!-- Terminal / CLI Section -->
-    <div class="terminal-container">
-        <div class="terminal-header">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-            <span class="terminal-title">system_cli.exe</span>
-        </div>
-        <div class="terminal-body" id="terminalOutput">
-            <p>Welcome to the System CLI! Type <span class="highlight">'help'</span> for available commands.</p>
-        </div>
-        <div class="terminal-input-line">
-            <span class="prompt">&gt;</span>
-            <input type="text" id="terminalInput" placeholder="Type a command..." onkeydown="handleCliCommand(event)" />
-        </div>
-    </div>
-    
-    <!-- Feedback Box with Live Character Counter -->
-    <div class="feedback-box">
-        <h3>Feedback</h3>
-        <form action="https://formspree.io/f/mbggyjnd" method="POST" id="feedbackForm">
-            <textarea 
-                name="message" 
-                id="feedbackText" 
-                placeholder="Leave your feedback here..." 
-                maxlength="200" 
-                required
-                oninput="updateCharCount()"></textarea>
-            
-            <div id="charCount" class="char-count">0 / 200 characters</div>
-            
-            <button type="submit" id="submitBtn">Send Feedback</button>
-        </form>
-    </div>
-
-    <!-- Link to JavaScript file -->
-    <script src="script.js"></script>
-    <button id="themeToggleBtn" onclick="toggleTheme()">🌙 Dark Mode</button>
     <div class="main-layout">
-    <!-- Left Column: Code Showcase Box -->
-    <div class="code-box-container">
-        <div class="code-box-header">
-            <h3>⚡ Code Library</h3>
-            <button class="copy-btn" onclick="copyCode()">Copy Code</button>
-        </div>
-        <div class="code-box-body">
-            <pre><code id="codeSnippet">// --- ESP8266 Motor Driver Web Control ---
+        <!-- LEFT COLUMN: Your Code Library / Showcase Box -->
+        <div class="code-box-container">
+            <div class="code-box-header">
+                <h3>⚡ My Code Library</h3>
+                <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+            </div>
+            <div class="code-box-body">
+                <!-- YOU CAN PASTE ANY CODE YOU WANT RIGHT HERE -->
+                <pre><code id="codeSnippet">// --- Paste your custom code here for viewers ---
 #include <ESP8266WiFi.h>
 
 const char* ssid = "YOUR_WIFI_NAME";
 const char* password = "YOUR_PASSWORD";
 
-WiFiServer server(80);
-
 void setup() {
     Serial.begin(115200);
-    pinMode(D1, OUTPUT); // Motor Pin A
-    pinMode(D2, OUTPUT); // Motor Pin B
-    WiFi.begin(ssid, password);
-    
-    while (WiFi.status() != WL_CONNECTED) {
-        delay(500);
-        Serial.print(".");
-    }
-    server.begin();
+    // Your code setup logic
 }
 
 void loop() {
-    // Web server request handling logic
+    // Your code loop logic
 }</code></pre>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Clock, Terminal, and Interactive Tools -->
+        <div class="right-content">
+            <!-- Dynamic Greeting & Clock -->
+            <div class="greeting-container">
+                <h2 id="greeting">Hello!</h2>
+                <p id="clock">00:00:00 AM</p>
+            </div>
+
+            <h1>Hello World!</h1>
+            <p id="text">This HTML page is being served by my local Python web server!</p>
+
+            <!-- Interactive button -->
+            <button onclick="changeText()">Click Me</button>
+
+            <!-- Theme Toggle Button -->
+            <button id="themeToggleBtn" onclick="toggleTheme()">🌙 Dark Mode</button>
+
+            <!-- Terminal / CLI Section -->
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="terminal-title">system_cli.exe</span>
+                </div>
+                <div class="terminal-body" id="terminalOutput">
+                    <p>Welcome to the System CLI! Type <span class="highlight">'help'</span> for available commands.</p>
+                </div>
+                <div class="terminal-input-line">
+                    <span class="prompt">&gt;</span>
+                    <input type="text" id="terminalInput" placeholder="Type a command..." onkeydown="handleCliCommand(event)" />
+                </div>
+            </div>
+
+            <!-- Feedback Box with Live Character Counter -->
+            <div class="feedback-box">
+                <h3>Feedback</h3>
+                <form action="https://formspree.io/f/mbggyjnd" method="POST" id="feedbackForm">
+                    <textarea name="message" id="feedbackText" placeholder="Leave your feedback here..." oninput="updateCharCount()" maxlength="200"></textarea>
+                    <div id="charCount">0 / 200 characters</div>
+                    <button type="submit" id="submitBtn">Send Feedback</button>
+                </form>
+            </div>
         </div>
     </div>
-
-    <!-- Right Column: Your Existing Features -->
-    <div class="right-content">
-        <!-- Paste your existing Clock, Terminal, and Feedback HTML elements here -->
-    </div>
-</div>
-</body>
-</html>
