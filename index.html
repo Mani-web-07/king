@@ -7,43 +7,30 @@
 </head>
 <body>
     <div class="main-layout">
-        <!-- LEFT COLUMN: Code Library for Viewers -->
-        <div class="code-box-container">
-            <div class="code-box-header">
-                <h3>⚡ Code Library</h3>
-                <button class="copy-btn" onclick="copyCode()">Copy Code</button>
-            </div>
-            <div class="code-box-body">
-                <!-- YOU CAN PASTE OR CHANGE YOUR CODE SNIPPET HERE -->
-                <pre><code id="codeSnippet">// --- ESP8266 Motor Driver Web Control ---
-#include <ESP8266WiFi.h>
-
-const char* ssid = "YOUR_WIFI_NAME";
-const char* password = "YOUR_PASSWORD";
-
-WiFiServer server(80);
-
-void setup() {
-    Serial.begin(115200);
-    pinMode(D1, OUTPUT);
-    pinMode(D2, OUTPUT);
-    WiFi.begin(ssid, password);
-    
-    while (WiFi.status() != WL_CONNECTED) {
-        delay(500);
-        Serial.print(".");
-    }
-    server.begin();
-}
-
-void loop() {
-    // Web server request handling logic
-}</code></pre>
-            </div>
+        <!-- LEFT SIDEBAR MENU (Like your Gemini Sidebar) -->
+        <div class="sidebar-menu">
+            <h3>📂 Code Library</h3>
+            <ul id="projectList">
+                <li class="sidebar-item active" onclick="loadProject('esp8266', event)">ESP8266 Motor Control</li>
+                <li class="sidebar-item" onclick="loadProject('pythonServer', event)">Python Web Server</li>
+                <li class="sidebar-item" onclick="loadProject('jsTerminal', event)">Terminal CLI Script</li>
+                <li class="sidebar-item" onclick="loadProject('themeToggle', event)">Dark Mode Toggle</li>
+            </ul>
         </div>
 
-        <!-- RIGHT COLUMN: Interactive Dashboard Elements -->
-        <div class="right-content">
+        <!-- RIGHT CONTENT AREA (Code Box + Dashboard Features) -->
+        <div class="content-area">
+            <!-- Dynamic Code Display Box -->
+            <div class="code-box-container">
+                <div class="code-box-header">
+                    <h3 id="codeTitle">ESP8266 Motor Control</h3>
+                    <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+                </div>
+                <div class="code-box-body">
+                    <pre><code id="codeSnippet">Loading...</code></pre>
+                </div>
+            </div>
+
             <!-- Dynamic Greeting & Clock -->
             <div class="greeting-container">
                 <h2 id="greeting">Hello!</h2>
